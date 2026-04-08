@@ -3,17 +3,7 @@ LangGraph ReAct Agent — 竞争情报自主研究
 
 架构（ReAct 循环）：
 
-    START
-      │
-      ▼
-  ┌──────────┐   有工具调用   ┌──────────┐
-  │  agent   │ ─────────────▶ │  tools   │
-  │  (LLM)   │ ◀───────────── │ (执行器) │
-  └──────────┘   返回结果     └──────────┘
-      │
-      │ 无工具调用（LLM 直接回复 = 最终报告）
-      ▼
-     END
+    START → agent ⟷ tools → … → END（报告通过完整性校验后结束）
 
 工具：
   - search_web(query)   : DuckDuckGo 网络搜索
@@ -295,9 +285,15 @@ def run_agent(config: Config) -> str:
 
     competitors_str = "、".join(config.competitor_list)
     market = config.market or config.default_product_category or "未指定"
+    our_line = (
+        f"**我方产品：** {config.our_product}\n"
+        if getattr(config, "our_product", None)
+        else ""
+    )
 
     user_task = (
         f"请对以下竞争对手进行全面研究，并生成竞争情报报告：\n\n"
+        f"{our_line}"
         f"**竞争对手：** {competitors_str}\n"
         f"**市场/产品类别：** {market}\n"
         f"**地理范围：** {config.input_geography or '全球'}\n"

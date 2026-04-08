@@ -3,7 +3,7 @@
 ## 项目概述
 
 本项目是一个 AI 辅助竞争情报（Competitive Intelligence）分析工具，面向产品经理（PMM）。  
-核心能力：竞争格局映射 → 叙事分析 → 空白空间识别。
+主流程为 **LangGraph Agent** 自主联网检索与抓取，输出结构化长报告（覆盖市场、竞品分层、能力、商业化、增长、SWOT、壁垒与机会等章节）。
 
 ## 技能库（Skills）
 
@@ -122,14 +122,10 @@
 
 | 文件/目录 | 说明 |
 |----------|------|
-| `main.py` | 主入口，运行 `python main.py` 启动分析流程 |
-| `src/pipeline.py` | 三步 Step 注册表（编号→类），`main` 只从这里取 `STEPS` |
+| `main.py` | 主入口，运行 `python main.py` 启动 **Agent** 竞争情报流程 |
 | `src/constants.py` | 全局常量：默认模型名、智谱 API Base URL（单一来源） |
-| `src/agent/graph.py` | LangGraph ReAct Agent，使用 GLM + DuckDuckGo 自主研究竞品 |
-| `src/steps/` | 三步分析流程（景观映射→叙事分析→空白空间识别） |
-| `src/report/` | 读取 Step 输出目录，按 11 章 + 多 Key 轮转生成总报告 |
-| `src/report/definitions.py` | 报告章节定义、Step 输出目录映射、文件名标签 |
-| `src/prompts/` | 各步骤 AI prompt 模板 |
+| `src/agent/graph.py` | LangGraph ReAct Agent，使用 GLM + DuckDuckGo 自主研究并生成长报告 |
+| `src/prompts/` | 历史三步流程遗留的 prompt 模板（当前主流程未使用） |
 | `competitors_input.json` | 结构化竞争对手输入文件（复制并填写） |
 | `outputs/` | 所有分析输出（Markdown 报告） |
 | `.env.example` | 环境变量模板，复制为 `.env` 并填入 API Key |
@@ -143,9 +139,9 @@ cp .env.example .env   # 填入 ZHIPU_API_KEY_1 等
 # 2. 安装依赖
 pip install -r requirements.txt
 
-# 3a. 使用 Agent 模式（自动联网搜索）
-python main.py --agent --competitors "竞品A,竞品B" --market "SaaS CRM"
+# 3a. 命令行指定竞品（自动联网搜索）
+python main.py --competitors "竞品A,竞品B" --market "SaaS CRM"
 
-# 3b. 使用结构化输入（提供官网文案）
+# 3b. 使用结构化输入（或项目根目录存在 competitors_input.json 时可直接 python main.py）
 python main.py --input competitors_input.json
 ```

@@ -24,26 +24,26 @@ class Config:
     market_override: Optional[str] = None
     input_file: Optional[str] = None          # --input 指定的 JSON 文件路径
 
-    # ── 智谱AI（GLM）— 三步三Key，按用途分配 ──────────────────
-    # Key 1：Step 1 景观综合 + Step 5 监控（GLM-4.6V-FlashX）
+    # ── 智谱AI（GLM）— 多 Key（Agent 与扩展能力共用）──────────
+    # Key 1：主用（GLM-4.6V-FlashX，见 src/constants.py）
     zhipu_api_key_1: str = field(
         default_factory=lambda: os.getenv("ZHIPU_API_KEY_1", ""),
         repr=False,
         metadata={"secret": True},
     )
-    # Key 2：Step 2 叙事分析 + Step 3 空白映射（GLM-4.6V-FlashX）
+    # Key 2：备用
     zhipu_api_key_2: str = field(
         default_factory=lambda: os.getenv("ZHIPU_API_KEY_2", ""),
         repr=False,
         metadata={"secret": True},
     )
-    # Key 3：Step 4 销售赋能 / 战斗卡生成（GLM-4.6V-FlashX）
+    # Key 3：备用
     zhipu_api_key_3: str = field(
         default_factory=lambda: os.getenv("ZHIPU_API_KEY_3", ""),
         repr=False,
         metadata={"secret": True},
     )
-    # Key 4：可选；报告按章节轮转时与 1–3 一起参与负载均衡
+    # Key 4：可选备用
     zhipu_api_key_4: str = field(
         default_factory=lambda: os.getenv("ZHIPU_API_KEY_4", ""),
         repr=False,
@@ -192,6 +192,11 @@ class Config:
     @property
     def input_company_size(self) -> str:
         return self._input_data.get("company_size", "")
+
+    @property
+    def our_product(self) -> str:
+        """结构化 JSON 中的我方产品名（可选）"""
+        return (self._input_data.get("our_product") or "").strip()
 
     @property
     def market(self) -> str:
