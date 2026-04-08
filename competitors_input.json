@@ -1,0 +1,110 @@
+{
+  "_comment": "竞争情报工具包 — AI 图像增强与修复赛道竞品分析",
+
+  "market": "AI 图像增强与修复（Mobile & Web）",
+  "product_category": "AI Photo Enhancement & Restoration",
+  "geography": "Global",
+  "company_size": "C端消费者 / 创作者",
+
+  "competitors": [
+    {
+      "name": "Retake",
+      "category": "direct",
+      "website": "https://retake.cam",
+      "website_copy": "",
+      "sales_notes": "",
+      "win_loss_notes": "",
+      "tags": ["AI修复", "照片还原"]
+    },
+    {
+      "name": "Remini",
+      "category": "direct",
+      "website": "https://remini.ai",
+      "website_copy": "",
+      "sales_notes": "",
+      "win_loss_notes": "",
+      "tags": ["AI增强", "老照片修复", "人像"]
+    },
+    {
+      "name": "Photo Revive",
+      "category": "direct",
+      "website": "",
+      "website_copy": "",
+      "sales_notes": "",
+      "win_loss_notes": "",
+      "tags": ["AI修复", "老照片"]
+    },
+    {
+      "name": "Filmora",
+      "category": "indirect",
+      "website": "https://filmora.wondershare.com",
+      "website_copy": "",
+      "sales_notes": "",
+      "win_loss_notes": "",
+      "tags": ["视频编辑", "AI功能", "创作者工具"]
+    },
+    {
+      "name": "Wink",
+      "category": "direct",
+      "website": "",
+      "website_copy": "",
+      "sales_notes": "",
+      "win_loss_notes": "",
+      "tags": ["AI美颜", "人像编辑"]
+    },
+    {
+      "name": "Meitu",
+      "category": "direct",
+      "website": "https://www.meitu.com",
+      "website_copy": "",
+      "sales_notes": "",
+      "win_loss_notes": "",
+      "tags": ["AI美颜", "中国市场", "图像编辑"]
+    },
+    {
+      "name": "Picsart",
+      "category": "indirect",
+      "website": "https://picsart.com",
+      "website_copy": "",
+      "sales_notes": "",
+      "win_loss_notes": "",
+      "tags": ["AI创作", "设计", "图像编辑平台"]
+    },
+    {
+      "name": "SelfiyzAI",
+      "category": "direct",
+      "website": "",
+      "website_copy": "",
+      "sales_notes": "",
+      "win_loss_notes": "",
+      "tags": ["AI自拍", "人像生成"]
+    },
+    {
+      "name": "Visify",
+      "category": "direct",
+      "website": "",
+      "website_copy": "",
+      "sales_notes": "",
+      "win_loss_notes": "",
+      "tags": ["AI图像处理"]
+    },
+    {
+      "name": "Canva",
+      "category": "indirect",
+      "website": "https://www.canva.com",
+      "website_copy": "",
+      "sales_notes": "",
+      "win_loss_notes": "",
+      "tags": ["设计平台", "AI功能", "创作者工具"]
+    },
+    {
+      "name": "Facetune",
+      "category": "direct",
+      "website": "https://www.facetune.com",
+      "website_copy": "",
+      "sales_notes": "",
+      "win_loss_notes": "",
+      "tags": ["人像美化", "AI修图", "自拍"]
+    }
+  ]
+}

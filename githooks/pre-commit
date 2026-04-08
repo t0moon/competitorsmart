@@ -1,0 +1,23 @@
+#!/bin/sh
+# 阻止将本地环境文件（含 API Key）误加入提交。启用：git config core.hooksPath githooks
+staged=$(git diff --cached --name-only --diff-filter=ACM)
+for f in $staged; do
+	case "$f" in
+	.env|.env.local|.env.development|.env.production|.env.staging)
+		printf '%s\n' "拒绝提交: $f（含密钥，请留在本机 .env，勿入库）" >&2
+		exit 1
+		;;
+	esac
+	case "$f" in
+	.env.*)
+		case "$f" in
+		.env.example) ;;
+		*)
+			printf '%s\n' "拒绝提交: $f（环境文件可能含密钥；若确需共享请改名为非 .env.* 模板）" >&2
+			exit 1
+			;;
+		esac
+		;;
+	esac
+done
+exit 0

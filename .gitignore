@@ -1,0 +1,50 @@
+# 环境变量与密钥（绝对不能提交；仅 .env.example 可入库）
+.env
+.env.local
+.env.development
+.env.production
+.env.staging
+.env.*
+!.env.example
+*.pem
+*service-account*.json
+secrets.json
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+ENV/
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# 输出报告（包含竞争情报内容，不提交到版本库）
+outputs/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# 测试覆盖率
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Jupyter
+.ipynb_checkpoints/

@@ -1,0 +1,35 @@
+# AI 研究工具（智谱AI GLM，兼容 OpenAI SDK）
+openai>=1.30.0
+requests>=2.32.0
+
+# LangGraph Agent（自主研究模式）
+langgraph>=0.2.0
+langchain>=0.2.0
+langchain-openai>=0.1.0
+langchain-core>=0.2.0
+duckduckgo-search>=6.0.0
+
+# 环境变量
+python-dotenv>=1.0.0
+
+# CRM 集成
+simple-salesforce>=1.12.0
+hubspot-api-client>=8.2.0
+
+# 数据存储
+notion-client>=2.2.0
+gspread>=6.1.0
+google-auth>=2.29.0
+pyairtable>=2.3.0
+
+# 数据处理与输出
+jinja2>=3.1.4
+pydantic>=2.7.0
+rich>=13.7.0
+
+# 调度与异步
+schedule>=1.2.0
+httpx>=0.27.0
+
+# 邮件通知
+# smtplib 为 Python 标准库，无需额外安装
