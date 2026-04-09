@@ -1,9 +1,10 @@
 """
 LangGraph Agent 工具集
 
-两个核心工具，无需 API Key：
+核心工具（无搜索/抓取类 API Key）：
   - search_web   : DuckDuckGo 网络搜索
   - fetch_webpage: 网页内容抓取 + HTML 清洗
+  截图见 screenshot_tool.create_screenshot_webpage_tool（Playwright）
 """
 
 from __future__ import annotations

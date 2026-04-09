@@ -124,7 +124,8 @@
 |----------|------|
 | `main.py` | 主入口，运行 `python main.py` 启动 **Agent** 竞争情报流程 |
 | `src/constants.py` | 全局常量：默认模型名、智谱 API Base URL（单一来源） |
-| `src/agent/graph.py` | LangGraph ReAct Agent，使用 GLM + DuckDuckGo 自主研究并生成长报告 |
+| `src/agent/graph.py` | LangGraph ReAct Agent：GLM + DuckDuckGo + 可选 Playwright 截图写入报告 |
+| `src/export_docx.py` | Markdown → Word（.docx），依赖本机安装 [Pandoc](https://pandoc.org) |
 | `src/prompts/` | 历史三步流程遗留的 prompt 模板（当前主流程未使用） |
 | `competitors_input.json` | 结构化竞争对手输入文件（复制并填写） |
 | `outputs/` | 所有分析输出（Markdown 报告） |
@@ -138,10 +139,15 @@ cp .env.example .env   # 填入 ZHIPU_API_KEY_1 等
 
 # 2. 安装依赖
 pip install -r requirements.txt
+# Agent 自动截图（可选但推荐）：安装 Chromium 驱动
+playwright install chromium
 
 # 3a. 命令行指定竞品（自动联网搜索）
 python main.py --competitors "竞品A,竞品B" --market "SaaS CRM"
 
 # 3b. 使用结构化输入（或项目根目录存在 competitors_input.json 时可直接 python main.py）
 python main.py --input competitors_input.json
+
+# 3c. 同时导出 Word（需本机已安装 pandoc，见 https://pandoc.org/installing.html）
+python main.py --competitors "竞品A,竞品B" --export-docx
 ```

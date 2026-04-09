@@ -25,7 +25,7 @@ class Config:
     input_file: Optional[str] = None          # --input 指定的 JSON 文件路径
 
     # ── 智谱AI（GLM）— 多 Key（Agent 与扩展能力共用）──────────
-    # Key 1：主用（GLM-4.6V-FlashX，见 src/constants.py）
+    # Key 1：主用（glm-4.7，见 src/constants.py）
     zhipu_api_key_1: str = field(
         default_factory=lambda: os.getenv("ZHIPU_API_KEY_1", ""),
         repr=False,

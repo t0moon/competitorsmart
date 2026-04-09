@@ -2,9 +2,9 @@
 智谱AI（BigModel）GLM 客户端
 接口兼容 OpenAI SDK，无需额外依赖
 用途：
-  Key 1 (ZHIPU_API_KEY_1) — Step 1 景观综合 + Step 5 监控  → GLM-4.6V-FlashX
-  Key 2 (ZHIPU_API_KEY_2) — Step 2 叙事分析 + Step 3 空白  → GLM-4.6V-FlashX
-  Key 3 (ZHIPU_API_KEY_3) — Step 4 销售赋能（战斗卡）      → GLM-4.6V-FlashX
+  Key 1 (ZHIPU_API_KEY_1) — Step 1 景观综合 + Step 5 监控  → glm-4.7
+  Key 2 (ZHIPU_API_KEY_2) — Step 2 叙事分析 + Step 3 空白  → glm-4.7
+  Key 3 (ZHIPU_API_KEY_3) — Step 4 销售赋能（战斗卡）      → glm-4.7
 文档：https://open.bigmodel.cn/dev/api
 """
 
@@ -28,7 +28,7 @@ _STEP_MAP: dict[str, tuple[str, str]] = {
 class ZhipuClient(BaseAIClient):
     """
     智谱AI GLM 客户端，复用 OpenAI SDK（base_url 替换）。
-    默认使用 GLM-4.6V-FlashX。
+    默认使用 glm-4.7（见 src/constants.py）。
     """
 
     def __init__(

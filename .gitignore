@@ -28,6 +28,11 @@ build/
 # 输出报告（包含竞争情报内容，不提交到版本库）
 outputs/
 
+# 根目录本地生成的竞品分析报告、配图目录与 Pandoc 导出 Word（不入库）
+/*竞品分析*.md
+/*竞品分析_screenshots/
+/*.docx
+
 # IDE
 .vscode/
 .idea/

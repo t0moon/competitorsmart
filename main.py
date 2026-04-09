@@ -6,6 +6,7 @@
     python main.py --input my_input.json         # 结构化竞争对手输入文件
     python main.py --competitors A,B,C           # 快速指定竞争对手名称
     python main.py --dry-run                     # 仅验证配置与依赖，不执行 API 调用
+    python main.py --competitors A,B --export-docx  # 报告生成后额外导出 Word（需本机 Pandoc）
 """
 
 import argparse
@@ -43,6 +44,11 @@ def parse_args() -> argparse.Namespace:
         "--dry-run",
         action="store_true",
         help="验证配置、智谱 Key 与 Agent 依赖，不调用 API",
+    )
+    parser.add_argument(
+        "--export-docx",
+        action="store_true",
+        help="Agent 报告保存为 Markdown 后，用 Pandoc 再导出同名的 .docx（需本机已安装 pandoc）",
     )
     return parser.parse_args()
 
@@ -115,12 +121,29 @@ def main() -> None:
         warnings = config.validate()
         for w in warnings:
             console.print(f"  [yellow]⚠ {w}[/yellow]")
+        try:
+            import playwright  # noqa: F401
+        except ImportError:
+            console.print(
+                "  [yellow]⚠ 未安装 playwright；Agent 截图工具将不可用。"
+                "请 pip install playwright 并执行 playwright install chromium[/yellow]"
+            )
+        if args.export_docx:
+            import shutil
+
+            if shutil.which("pandoc"):
+                console.print("  [green]✓ 检测到 pandoc，可用于 --export-docx[/green]")
+            else:
+                console.print(
+                    "  [yellow]⚠ 未检测到 pandoc；使用 --export-docx 前请先安装："
+                    "https://pandoc.org/installing.html[/yellow]"
+                )
         if not warnings:
             console.print("  [green]配置验证通过[/green]")
         sys.exit(0)
 
     try:
-        run_agent(config)
+        run_agent(config, export_docx=args.export_docx)
     except Exception as e:
         console.print(f"[red]✗ Agent 运行失败: {safe_error_message(e, config)}[/red]")
         sys.exit(1)
