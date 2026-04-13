@@ -1,5 +1,15 @@
 # 竞品分析（CompetitorSmart）
 
+**Language / 语言**:
+[简体中文](README.md) |
+[English](README.en.md) |
+[Español](README.es.md) |
+[Français](README.fr.md) |
+[Deutsch](README.de.md) |
+[日本語](README.ja.md) |
+[한국어](README.ko.md) |
+[Português (Brasil)](README.pt-BR.md)
+
 面向 **产品经理 / PMM** 的 AI 辅助竞争情报工具。主流程为 **LangGraph ReAct Agent**：通过 DuckDuckGo 检索与网页抓取收集证据，调用 **智谱 GLM**（OpenAI 兼容接口）自主补全信息，最终落盘为 **11 章** Markdown 深度报告（市场、竞品分层、能力、商业化、增长、SWOT、壁垒与机会等）。
 
 默认模型与 API Base 在 `src/constants.py` 统一维护（当前默认：`glm-4.7`）。
